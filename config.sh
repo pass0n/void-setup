@@ -2,7 +2,7 @@
 
 PKGS="xorg-minimal xdg-user-dirs zathura zathura-pdf-mupdf git vscode firefox unrar unzip p7zip numlockx mpv mesa-dri mesa-dri-32bit gvfs elogind rtkit pavucontrol pipewire alsa-pipewire webp-pixbuf-loader nvidia470 nvidia470-libs-32bit"
 
-DEVEL="fontconfig-devel libX11-devel libXft-devel"
+MAKE="fontconfig-devel libX11-devel libXft-devel libXinerama-devel"
 
 THUNAR="Thunar tumbler thunar-archive-plugin file-roller thunar-media-tags-plugin"
 
@@ -35,7 +35,7 @@ elif [ "$n" = "2" ]; then
 elif [ "$n" = "3" ]; then
     eval "sudo xbps-install -S $BSPWM $THUNAR $PKGS"
 else
-    eval "sudo xbps-install -S $PKGS $DEVEL"
+    eval "sudo xbps-install -S $PKGS $MAKE"
 fi
 
 ln -sf /usr/share/zoneinfo/America/Sao_Paulo /etc/localtime
