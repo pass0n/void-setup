@@ -41,15 +41,13 @@ xchroot /mnt /bin/bash <<EOF
 
     grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id="void_grub" /dev/sda
     xbps-reconfigure -fa
-
-    git clone git@github.com:pass0n/void-setup.git /home/
 EOF
 xchroot /mnt passwd root
 
+cp config.sh /mnt/
 xchroot /mnt /bin/bash <<EOF
-    cd /home/dotfiles/
     chmod +x config.sh
     ./config.sh
-    cd ..
-    rm -r dotfiles
+    rm -r lost+found
+    rm config.sh
 EOF
