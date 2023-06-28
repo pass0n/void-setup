@@ -1,6 +1,6 @@
 #!/bin/bash
 
-PKGS="xorg-minimal xdg-user-dirs zathura zathura-pdf-mupdf git vscode firefox unrar unzip p7zip numlockx mpv mesa-dri mesa-dri-32bit gvfs elogind rtkit pavucontrol pipewire alsa-pipewire webp-pixbuf-loader nvidia470 nvidia470-libs-32bit"
+PKGS="xorg-minimal xdg-user-dirs zathura zathura-pdf-mupdf git vscode firefox unrar unzip p7zip numlockx mpv mesa-dri mesa-dri-32bit gvfs elogind rtkit pavucontrol pipewire alsa-pipewire webp-pixbuf-loader fontconfig-devel libX11-devel libXft-devel nvidia470 nvidia470-libs-32bit"
 
 MAKE="fontconfig-devel libX11-devel libXft-devel libXinerama-devel"
 
@@ -8,7 +8,7 @@ THUNAR="Thunar tumbler thunar-archive-plugin file-roller thunar-media-tags-plugi
 
 XFCE="$THUNAR xfce4 ristretto"
 
-BSPWM="bspwm sxhkd polybar rofi picom dex setxkbmap xsetroot xprop nitrogen lxappearance ristretto"
+BSPWM="bspwm sxhkd polybar rofi picom setxkbmap xsetroot xprop nitrogen lxappearance ristretto"
 
 AWESOME="awesome nitrogen ristretto dex scrot setxkbmap lxappearance"
 
@@ -17,7 +17,8 @@ xbps-install -Sy
 
 mkdir -p /var/lib/dkms
 
-while true; do
+n=""
+while [ -z "$n" ]; do
     echo -ne "XFCE4 = 1\nAWESOMEWM = 2\nBSPWM = 3\nNúmero: "
     read -r n
     
@@ -25,6 +26,8 @@ while true; do
     read -r escolha
     if [ "$escolha" = "s" ] || [ "$escolha" = "S" ]; then
         break
+    else
+        n=""
     fi
 done
 
